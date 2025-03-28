@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bibliotecario;
+use App\Models\Persona;
+use App\Models\Usuario;
 
 class BibliotecariosController extends Controller
 {
@@ -38,10 +40,13 @@ class BibliotecariosController extends Controller
     public function update(Request $request, $id)
     {
         $bibliotecario = Bibliotecario::find($id);
+        $persona_id = $bibliotecario->persona->id;
+        $persona = Persona::find($persona_id);
 
-        $bibliotecario->nombre = $request->input('nombre');
-        $bibliotecario->apellido = $request->input('apellido');
+        $persona->nombre = $request->input('nombre');
+        $persona->edad = $request->input('edad');
 
+        $persona->save();
         $bibliotecario->save();
 
         return redirect('/bibliotecarios');
@@ -50,10 +55,18 @@ class BibliotecariosController extends Controller
     public function destroy(Request $request, $id)
     {
         $bibliotecario = Bibliotecario::find($id);
-        if (!$bibliotecario) {
-            return redirect('/bibliotecarios')->with('error', 'Bibliotecario no encontrado.');
-        }
+        $persona_id = $bibliotecario->persona->id;
+        $persona = Persona::find($persona_id);
+        if (!$bibliotecario || !$persona) {
+            return redirect('/bibliotecarios');
+        } 
+        
         $bibliotecario->delete();
+        
+        if (!Usuario::firstWhere('persona_id', '=', $persona_id)) {
+            $persona->delete();
+        }
+
 
         return redirect('/bibliotecarios');
     }
