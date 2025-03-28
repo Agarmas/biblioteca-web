@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <h1 class="title text-center text-3xl mb-6">Libros</h1>
+    @include('navbar')
+    <h1 class="title">Libros</h1>
     <table class="w-3/4 mx-auto border-collapse border border-gray-300 shadow-lg">
         <thead>
             <tr class="bg-gray-200">

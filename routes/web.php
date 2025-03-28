@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\LibrosController;
-use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\BibliotecariosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,4 +10,5 @@ Route::get('/', function () {
 
 Route::resources([
     'libros' => LibrosController::class,
+    'bibliotecarios' => BibliotecariosController::class,
 ]);

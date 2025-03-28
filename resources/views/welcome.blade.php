@@ -9,6 +9,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <h1 class="title">Hola mundo</h1>
+        @include('navbar')
+
+        <h1 class="title">App de bibliotecas de Antonio Garrido Massé</h1>
+        <h2 class="subtitle">Para la EPD 3.1 de TAD</h2>
     </body>
 </html>
