@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1 class="title">Libros</h1>
+    <h1 class="title text-center text-3xl mb-6">Libros</h1>
     <table class="w-3/4 mx-auto border-collapse border border-gray-300 shadow-lg">
         <thead>
             <tr class="bg-gray-200">
@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             @foreach ($libros as $libro)
-                <tr class="hover:bg-gray-100">
+                <tr class="hover:bg-gray-100 cursor-pointer" onclick="window.location='{{ route('libros.edit', $libro) }}'">
                     <td class="border border-gray-300 px-4 py-2">{{ $libro->titulo }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $libro->autor }}</td>
                     <td class="border border-gray-300 px-4 py-2 text-center">

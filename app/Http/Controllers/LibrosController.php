@@ -18,7 +18,7 @@ class LibrosController extends Controller
     {
         Libro::create(request()->all());
 
-        return redirect('/libros')->with('success', 'Libro creado correctamente.');
+        return redirect('/libros');
     }
 
     public function show($id)
@@ -35,21 +35,26 @@ class LibrosController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        $libro = Libro::find(request('id'));
-        $libro->titulo = request('titulo');
-        $libro->autor = request('autor');
-        $libro->editorial = request('editorial');
-        $libro->anio = request('anio');
+        $libro = Libro::find($id);
+    
+        $libro->titulo = $request->input('titulo');
+        $libro->autor = $request->input('autor');
+        $libro->prestado = $request->has('prestado') ? 1 : 0;
+    
         $libro->save();
 
         return redirect('/libros');
     }
+    
 
-    public function destroy()
+    public function destroy(Request $request, $id)
     {
-        $libro = Libro::find(request('id'));
+        $libro = Libro::find($id);
+        if (!$libro) {
+            return redirect('/libros')->with('error', 'Libro no encontrado.');
+        }
         $libro->delete();
 
         return redirect('/libros');
