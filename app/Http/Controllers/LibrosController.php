@@ -7,19 +7,28 @@ use App\Models\Libro;
 
 class LibrosController extends Controller
 {
-    public function list()
+    public function index()
     {
         return view('libros', [
             'libros' => Libro::all()
         ]);
     }
 
-    public function create()
+    public function store()
     {
+        Libro::create(request()->all());
 
+        return redirect('/libros')->with('success', 'Libro creado correctamente.');
     }
 
-    public function read($id)
+    public function show($id)
+    {
+        return view('libro', [
+            'libro' => Libro::find($id)
+        ]);
+    }
+
+    public function edit($id)
     {
         return view('libro', [
             'libro' => Libro::find($id)
@@ -28,11 +37,21 @@ class LibrosController extends Controller
 
     public function update()
     {
+        $libro = Libro::find(request('id'));
+        $libro->titulo = request('titulo');
+        $libro->autor = request('autor');
+        $libro->editorial = request('editorial');
+        $libro->anio = request('anio');
+        $libro->save();
 
+        return redirect('/libros');
     }
 
-    public function delete()
+    public function destroy()
     {
-        
+        $libro = Libro::find(request('id'));
+        $libro->delete();
+
+        return redirect('/libros');
     }
 }

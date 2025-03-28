@@ -3,14 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Bibliotecario;
-use App\Models\Usuario;
 
-class Persona extends Model
+class Biblioteca extends Model
 {
     protected $fillable = [
         'nombre',
-        'edad',
     ];
 
     public function bibliotecario()
@@ -18,8 +15,8 @@ class Persona extends Model
         return $this->hasOne(Bibliotecario::class);
     }
 
-    public function usuario()
+    public function libros()
     {
-        return $this->hasOne(Usuario::class);
+        return $this->hasMany(Libro::class);
     }
 }
