@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Arial', 
+        'Helvetica Neue', 
+        'Helvetica', 
+        'sans-serif';
+}
+
+body {
+    @apply font-sans bg-gray-50 text-gray-900;
+}
+
+.title {
+    @apply text-3xl font-extrabold text-center text-gray-800 my-3;
+}
