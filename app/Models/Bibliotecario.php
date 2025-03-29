@@ -13,6 +13,6 @@ class Bibliotecario extends Model
 
     public function biblioteca()
     {
-        return $this->belongsTo(Biblioteca::class);
+        return $this->hasOne(Biblioteca::class);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BibliotecasController;
 use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\BibliotecariosController;
 use App\Http\Controllers\UsuariosController;
@@ -13,4 +14,5 @@ Route::resources([
     'libros' => LibrosController::class,
     'bibliotecarios' => BibliotecariosController::class,
     'usuarios' => UsuariosController::class,
+    'bibliotecas' => BibliotecasController::class,
 ]);
