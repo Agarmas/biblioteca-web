@@ -14,9 +14,14 @@ class LibrosController extends Controller
         ]);
     }
 
-    public function store()
+    public function create()
     {
-        Libro::create(request()->all());
+        return view('create-libro');
+    }
+
+    public function store(Request $request, $id)
+    {
+        Libro::create($request->all());
 
         return redirect('/libros');
     }
@@ -53,7 +58,7 @@ class LibrosController extends Controller
     {
         $libro = Libro::find($id);
         if (!$libro) {
-            return redirect('/libros')->with('error', 'Libro no encontrado.');
+            return redirect('/libros');
         }
         $libro->delete();
 

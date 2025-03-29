@@ -21,11 +21,6 @@
             <label for="autor">Autor</label>
             <input type="text" name="autor" id="autor" value="{{ $libro->autor }}">
 
-            <div class="flex items-center mb-3">
-                <input type="checkbox" name="prestado" id="prestado" value="1" {{ $libro->prestado ? 'checked' : '' }}>
-                <label for="prestado">Prestado</label>
-            </div>
-
             <button type="submit" class="update-btn">Guardar Cambios</button>
         </form>
 

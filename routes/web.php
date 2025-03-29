@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\BibliotecariosController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,4 +12,5 @@ Route::get('/', function () {
 Route::resources([
     'libros' => LibrosController::class,
     'bibliotecarios' => BibliotecariosController::class,
+    'usuarios' => UsuariosController::class,
 ]);
