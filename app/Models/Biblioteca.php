@@ -8,6 +8,7 @@ class Biblioteca extends Model
 {
     protected $fillable = [
         'nombre',
+        'bibliotecario_id',
     ];
 
     public function bibliotecario()
