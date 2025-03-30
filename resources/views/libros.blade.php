@@ -17,6 +17,7 @@
             <tr>
                 <th>Título</th>
                 <th>Autor</th>
+                <th>Biblioteca</th>
                 <th>Prestado</th>
             </tr>
         </thead>
@@ -25,9 +26,8 @@
                 <tr onclick="window.location='{{ route('libros.edit', $libro) }}'">
                     <td>{{ $libro->titulo }}</td>
                     <td>{{ $libro->autor }}</td>
-                    <td class="border border-gray-300 px-4 py-2 text-center">
-                        <input type="checkbox" {{ $libro->prestado ? 'checked' : '' }} disabled class="w-5 h-5">
-                    </td>
+                    <td>{{ $libro->biblioteca ? $libro->biblioteca->nombre : 'Ninguna' }}</td>
+                    <td>{{ $libro->usuario ? $libro->usuario->persona->nombre : 'No prestado' }}</td>
                 </tr>
             @endforeach
         </tbody>

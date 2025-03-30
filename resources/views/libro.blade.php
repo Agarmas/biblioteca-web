@@ -21,6 +21,28 @@
             <label for="autor">Autor</label>
             <input type="text" name="autor" id="autor" value="{{ $libro->autor }}">
 
+            <label for="autor">Biblioteca</label>
+            <select name="biblioteca_id" id="biblioteca_id">
+                <option value="">Ninguna biblioteca</option>
+                @foreach ($bibliotecas as $biblioteca)
+                    <option value="{{ $biblioteca->id }}"
+                        {{ $libro->biblioteca_id == $biblioteca->id ? 'selected' : '' }}>
+                        {{ $biblioteca->nombre }}
+                    </option>
+                @endforeach
+            </select>
+
+            <label for="autor">Prestado</label>
+            <select name="usuario_id" id="usuario_id">
+                <option value="">No prestado</option>
+                @foreach ($usuarios as $usuario)
+                    <option value="{{ $usuario->id }}"
+                        {{ $libro->usuario_id == $usuario->id ? 'selected' : '' }}>
+                        {{ $usuario->persona->nombre }}
+                    </option>
+                @endforeach
+            </select>
+
             <button type="submit" class="update-btn">Guardar Cambios</button>
         </form>
 

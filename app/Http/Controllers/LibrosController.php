@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Libro;
+use App\Models\Usuario;
+use App\Models\Biblioteca;
 
 class LibrosController extends Controller
 {
@@ -29,14 +31,18 @@ class LibrosController extends Controller
     public function show($id)
     {
         return view('libro', [
-            'libro' => Libro::find($id)
+            'libro' => Libro::find($id),
+            'usuarios' => Usuario::all(),
+            'bibliotecas' => Biblioteca::all(),
         ]);
     }
 
     public function edit($id)
     {
         return view('libro', [
-            'libro' => Libro::find($id)
+            'libro' => Libro::find($id),
+            'usuarios' => Usuario::all(),
+            'bibliotecas' => Biblioteca::all(),
         ]);
     }
 
@@ -46,7 +52,12 @@ class LibrosController extends Controller
     
         $libro->titulo = $request->input('titulo');
         $libro->autor = $request->input('autor');
-        $libro->prestado = $request->has('prestado') ? 1 : 0;
+        $prestado = $request->input('usuario_id');
+        if ($prestado) {
+            $libro->usuario_id = $prestado;
+        } else {
+            $libro->usuario_id = null;
+        }
     
         $libro->save();
 

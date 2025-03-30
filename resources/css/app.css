@@ -10,7 +10,11 @@
 }
 
 body {
-    @apply font-sans bg-gray-50 text-gray-900;
+    @apply font-sans bg-gray-50;
+}
+
+.welcome-container {
+    @apply flex flex-col items-center justify-center min-h-screen bg-gray-100;
 }
 
 .navbar {
@@ -72,7 +76,7 @@ body {
         }
 
         button {
-            @apply w-full px-4 py-2 rounded-lg shadow-md transition duration-200;
+            @apply w-full px-4 py-2 rounded-lg shadow-md;
         }
     }
 
@@ -85,6 +89,6 @@ body {
     }
 
     a.back-btn {
-        @apply block w-full mt-6 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg shadow-md transition duration-200 text-center;
+        @apply block w-full mt-6 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg shadow-md text-center;
     }
 }
