@@ -12,6 +12,13 @@
     @include('navbar')
 
     <h1 class="title">Bibliotecas</h1>
+
+    <div class="flex justify-center mb-6">
+        <a href="{{ route('bibliotecas.create') }}" class="create-btn text-center">
+            Agregar Nueva Biblioteca
+        </a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>

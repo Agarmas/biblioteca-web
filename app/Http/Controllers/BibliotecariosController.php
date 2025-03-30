@@ -16,9 +16,20 @@ class BibliotecariosController extends Controller
         ]);
     }
 
-    public function store()
+    public function create()
     {
-        Bibliotecario::create(request()->all());
+        return view('create-bibliotecario');
+    }
+
+    public function store(Request $request)
+    {
+        $persona = new Persona();
+        $persona->nombre = $request->input('nombre');
+        $persona->edad = $request->input('edad');
+        $persona->save();
+        $bibliotecario = new Bibliotecario();
+        $bibliotecario->persona_id = $persona->id;
+        $bibliotecario->save();
 
         return redirect('/bibliotecarios');
     }

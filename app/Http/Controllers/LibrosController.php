@@ -18,10 +18,13 @@ class LibrosController extends Controller
 
     public function create()
     {
-        return view('create-libro');
+        return view('create-libro', [
+            'usuarios' => Usuario::all(),
+            'bibliotecas' => Biblioteca::all(),
+        ]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         Libro::create($request->all());
 
@@ -52,12 +55,16 @@ class LibrosController extends Controller
     
         $libro->titulo = $request->input('titulo');
         $libro->autor = $request->input('autor');
+        $libro->biblioteca_id = $request->input('biblioteca_id');
         $prestado = $request->input('usuario_id');
         if ($prestado) {
             $libro->usuario_id = $prestado;
+            $libro->prestado = true;
         } else {
             $libro->usuario_id = null;
+            $libro->prestado = false;
         }
+
     
         $libro->save();
 

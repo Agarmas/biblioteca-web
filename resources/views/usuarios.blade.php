@@ -12,6 +12,13 @@
     @include('navbar')
 
     <h1 class="title">Usuarios</h1>
+
+    <div class="flex justify-center mb-6">
+        <a href="{{ route('usuarios.create') }}" class="create-btn text-center">
+            Agregar Nuevo Usuario
+        </a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>

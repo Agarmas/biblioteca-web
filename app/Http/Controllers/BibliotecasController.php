@@ -17,10 +17,12 @@ class BibliotecasController extends Controller
 
     public function create()
     {
-        return view('create-biblioteca');
+        return view('create-biblioteca', [
+            'bibliotecarios' => Bibliotecario::all(),
+        ]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         Biblioteca::create($request->all());
 

@@ -13,13 +13,36 @@
         <h1 class="title">Crear Libro</h1>
 
         <form action="{{ route('libros.store') }}" method="POST">
+            @csrf
             <label for="titulo">Título</label>
             <input type="text" name="titulo" id="titulo">
 
             <label for="autor">Autor</label>
             <input type="text" name="autor" id="autor">
 
-            <button type="submit" class="update-btn">Guardar Libro</button>
+            <label for="biblioteca_id">Biblioteca</label>
+            <select name="biblioteca_id" id="biblioteca_id">
+                <option value="">Ninguna biblioteca</option>
+                @foreach ($bibliotecas as $biblioteca)
+                    <option value="{{ $biblioteca->id }}">
+                        {{ $biblioteca->nombre }}
+                    </option>
+                @endforeach
+            </select>
+
+            <label for="usuario_id">Prestado</label>
+            <select name="usuario_id" id="usuario_id">
+                <option value="">No prestado</option>
+                @foreach ($usuarios as $usuario)
+                    <option value="{{ $usuario->id }}">
+                        {{ $usuario->persona->nombre }}
+                    </option>
+                @endforeach
+            </select>
+
+            <button type="submit" class="update-btn">
+                Guardar Cambios
+            </button>
         </form>
 
         <a href="{{ route('libros.index') }}" class="back-btn">Volver a Libros</a>

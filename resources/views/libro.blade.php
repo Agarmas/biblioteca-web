@@ -21,7 +21,7 @@
             <label for="autor">Autor</label>
             <input type="text" name="autor" id="autor" value="{{ $libro->autor }}">
 
-            <label for="autor">Biblioteca</label>
+            <label for="biblioteca_id">Biblioteca</label>
             <select name="biblioteca_id" id="biblioteca_id">
                 <option value="">Ninguna biblioteca</option>
                 @foreach ($bibliotecas as $biblioteca)
@@ -32,7 +32,7 @@
                 @endforeach
             </select>
 
-            <label for="autor">Prestado</label>
+            <label for="usuario_id">Prestado</label>
             <select name="usuario_id" id="usuario_id">
                 <option value="">No prestado</option>
                 @foreach ($usuarios as $usuario)

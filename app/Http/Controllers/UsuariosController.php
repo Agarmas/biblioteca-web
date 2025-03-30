@@ -20,9 +20,15 @@ class UsuariosController extends Controller
         return view('create-usuario');
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        Usuario::create($request->all());
+        $persona = new Persona();
+        $persona->nombre = $request->input('nombre');
+        $persona->edad = $request->input('edad');
+        $persona->save();
+        $usuario = new Usuario();
+        $usuario->persona_id = $persona->id;
+        $usuario->save();
 
         return redirect('/usuarios');
     }

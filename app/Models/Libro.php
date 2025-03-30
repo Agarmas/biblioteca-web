@@ -9,7 +9,8 @@ class Libro extends Model
     protected $fillable = [
         'titulo',
         'autor',
-        'prestado',
+        'biblioteca_id',
+        'usuario_id',
     ];
 
     public function usuario()

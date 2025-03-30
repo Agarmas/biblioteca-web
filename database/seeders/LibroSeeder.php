@@ -25,8 +25,8 @@ class LibroSeeder extends Seeder
         ]);
 
         Libro::insert([
-            ['titulo' => 'Política', 'autor' => 'Aristóteles', 'biblioteca_id' => '2', 'usuario_id' => '1'],
-            ['titulo' => 'El Arte de la Guerra', 'autor' => 'Sun Tzu', 'biblioteca_id' => '2', 'usuario_id' => '2'],
+            ['titulo' => 'Política', 'autor' => 'Aristóteles', 'biblioteca_id' => '2', 'usuario_id' => '1', 'prestado' => true],
+            ['titulo' => 'El Arte de la Guerra', 'autor' => 'Sun Tzu', 'biblioteca_id' => '2', 'usuario_id' => '2', 'prestado' => true],
         ]);
     }
 }
