@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Persona;
 
 class UsuariosController extends Controller
 {
@@ -43,10 +44,13 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
-    
-        $usuario->persona->nombre = $request->input('nombre');
-        $usuario->persona->edad = $request->input('edad');
-    
+        $persona_id = $usuario->persona->id;
+        $persona = Persona::find($persona_id);
+
+        $persona->nombre = $request->input('nombre');
+        $persona->edad = $request->input('edad');
+
+        $persona->save();
         $usuario->save();
 
         return redirect('/usuarios');

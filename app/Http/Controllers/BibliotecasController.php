@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Biblioteca;
+use App\Models\Bibliotecario;
 
 class BibliotecasController extends Controller
 {
@@ -36,7 +37,8 @@ class BibliotecasController extends Controller
     public function edit($id)
     {
         return view('biblioteca', [
-            'biblioteca' => Biblioteca::find($id)
+            'biblioteca' => Biblioteca::find($id),
+            'bibliotecarios' => Bibliotecario::all(),
         ]);
     }
 
@@ -45,6 +47,7 @@ class BibliotecasController extends Controller
         $biblioteca = Biblioteca::find($id);
     
         $biblioteca->nombre = $request->input('nombre');
+        $biblioteca->bibliotecario_id = $request->input('bibliotecario_id');
     
         $biblioteca->save();
 
